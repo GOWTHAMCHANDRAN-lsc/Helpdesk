@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Frontend</title>
+</head>
+<body>
+    <h1>Frontend Debug Test</h1>
+    <div id="status">Loading...</div>
+    <script>
+        console.log('Debug script loaded');
+        
+        // Test API connectivity
+        fetch('/api/auth/user')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Auth check response:', data);
+                document.getElementById('status').innerHTML = 'API response: ' + JSON.stringify(data);
+            })
+            .catch(error => {
+                console.error('API error:', error);
+                document.getElementById('status').innerHTML = 'API error: ' + error.message;
+            });
+    </script>
+</body>
+</html>
